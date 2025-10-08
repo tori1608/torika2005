@@ -1,0 +1,112 @@
+def meters_to_kilometers(meters):
+    return meters / 1000
+
+def kilometers_to_meters(kilometers):
+    return kilometers * 1000
+
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
+
+def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5/9
+
+def kilograms_to_pounds(kilograms):
+    return kilograms * 2.20462
+
+def pounds_to_kilograms(pounds):
+    return pounds / 2.20462
+
+def mps_to_kmh(mps):
+    return mps * 3.6
+
+def kmh_to_mps(kmh):
+    return kmh / 3.6
+
+def centimeters_to_decimeters(centimeters):
+    return centimeters / 10
+
+def decimeters_to_centimeters(decimeters):
+    return decimeters * 10
+
+def print_menu():
+    print("\n" + "="*50)
+    print("          КОНВЕРТЕР ЕДИНИЦ ИЗМЕРЕНИЯ")
+    print("="*50)
+    print("1. Метры в Километры")
+    print("2. Километры в Метры")
+    print("3. Килограммы в Фунты")
+    print("4. Фунты в Килограммы")
+    print("5. Метры в секунду в Километры в час")
+    print("6. Километры в час в Метры в секунду")
+    print("7. Сантиметры в Дециметры")
+    print("8. Дециметры в Сантиметры")
+    print("9. Выход")
+
+def main():
+    print("Добро пожаловать в конвертер единиц измерения!")
+    print("Эта программа позволяет конвертировать различные физические величины.")
+    
+    while True:
+        print_menu()
+        
+        try:
+            choice = input("\nВыберите тип конвертации (0-10): ")
+            
+            if choice == '0':
+                print("Спасибо за использование конвертера! До свидания!")
+                break
+            
+            if choice not in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']:
+                print("Ошибка! Пожалуйста, выберите число от 0 до 10.")
+                continue
+            
+            value = float(input("Введите значение для конвертации: "))
+            
+            if choice == '1':
+                result = meters_to_kilometers(value)
+                print(f"{value} метров = {result:.4f} километров")
+            
+            elif choice == '2':
+                result = kilometers_to_meters(value)
+                print(f"{value} километров = {result:.2f} метров")
+            
+            elif choice == '5':
+                result = kilograms_to_pounds(value)
+                print(f"{value} кг = {result:.4f} фунтов")
+            
+            elif choice == '6':
+                result = pounds_to_kilograms(value)
+                print(f"{value} фунтов = {result:.4f} кг")
+            
+            elif choice == '7':
+                result = mps_to_kmh(value)
+                print(f"{value} м/с = {result:.2f} км/ч")
+            
+            elif choice == '8':
+                result = kmh_to_mps(value)
+                print(f"{value} км/ч = {result:.2f} м/с")
+            
+            elif choice == '9':
+                result = centimeters_to_decimeters(value)
+                print(f"{value} см = {result:.2f} дм")
+            
+            elif choice == '10':
+                result = decimeters_to_centimeters(value)
+                print(f"{value} дм = {result:.2f} см")
+            
+            # Предложение продолжить
+            continue_choice = input("\nХотите выполнить еще одну конвертацию? (да/нет): ").lower()
+            if continue_choice not in ['да', 'д', 'yes', 'y']:
+                print("Спасибо за использование конвертера! До свидания!")
+                break
+                
+        except ValueError:
+            print("Ошибка! Пожалуйста, введите корректное числовое значение.")
+        except KeyboardInterrupt:
+            print("\n\nПрограмма прервана пользователем. До свидания!")
+            break
+        except Exception as e:
+            print(f"Произошла ошибка: {e}")
+
+if __name__ == "__main__":
+    main()
